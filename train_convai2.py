@@ -160,48 +160,7 @@ def preprocess_raw_data(args, tokenizer, n_ctx):
             if dialogue_index < len(train_data) - 1:
                 f.write("\n")
     logger.info("finish preprocessing raw data,the result is stored in {}".format(args.train_tokenized_path))
-def preprocess_mmi_raw_data(args, tokenizer, n_ctx):
-    """
-    对原始语料进行处理，将原始语料的每段对话进行翻转，然后转换为用于train MMI模型的token id，对于每个dialogue，将其处于成如下形式"[CLS]utterance N[SEP]utterance N-1[SEP]utterance N-2[SEP]"
-    :param args:
-    :param tokenizer:
-    :param n_ctx:GPT2模型的上下文窗口大小,对于超过n_ctx(n_ctx包括了特殊字符)的dialogue进行截断
-    :return:
-    """
-    logger.info("tokenizing MMI raw data,raw data path:{}, token output path:{}".format(args.train_raw_path,
-                                                                                        args.train_mmi_tokenized_path))
-    with open(args.train_raw_path, 'rb') as f:
-        data = f.read().decode("utf-8")
-    train_data = data.split("\n")
-    # if "\r\n" in data:
-    #     train_data = data.split("\r\n\r\n")
-    # else:
-    #     train_data = data.split("\n\n")
-    logger.info("there are {} dialogue in raw dataset".format(len(train_data)))
-    with open(args.train_mmi_tokenized_path, "w", encoding="utf-8") as f:
-        for dialogue_index, dialogue in enumerate(tqdm(train_data)):
-            # if "\r\n" in data:
-            #     utterances = dialogue.split("\r\n")
-            # else:
-            #     utterances = dialogue.split("\n")
-            if '\t' not in dialogue:
-                continue
-            utterances, response, keyword = dialogue.split('\t')
-            # response keyword 需要处理
-            utterances = utterances.split("[EOS]")
-            dialogue_ids = [tokenizer.cls_token_id]  # 每个dialogue以[CLS]开头
-            for utterance in reversed(utterances):  # 将一段对话进行翻转
-                # dialogue_ids.extend([tokenizer.convert_tokens_to_ids(word) for word in utterance])
-                dialogue_ids.extend(tokenizer.encode(utterance))
-                dialogue_ids.append(tokenizer.sep_token_id)  # 每个utterance之后添加[SEP]，表示utterance结束
-            # 对超过n_ctx的长度进行截断,否则GPT2模型会报错
-            dialogue_ids = dialogue_ids[:n_ctx]
-            for dialogue_id in dialogue_ids:
-                f.write(str(dialogue_id) + ' ')
-            # 最后一条记录不添加换行符
-            if dialogue_index < len(train_data) - 1:
-                f.write("\n")
-    logger.info("finish preprocessing raw data,the result is stored in {}".format(args.train_tokenized_path))
+
 
 
 def calculate_loss_and_accuracy(outputs, labels, device):

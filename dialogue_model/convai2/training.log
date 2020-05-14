@@ -1,0 +1,54 @@
+2020-05-15 02:13:43,725 - INFO - tokenizing raw data,raw data path:data/convai2/train/data.txt, token output path:data/convai2/train/tokenized.txt
+2020-05-15 02:13:43,852 - INFO - there are 127156 dialogue in raw dataset
+2020-05-15 02:13:53,777 - INFO - finish preprocessing raw data,the result is stored in data/convai2/train/tokenized.txt
+2020-05-15 02:13:53,787 - INFO - Let's use GPUs to train
+2020-05-15 02:13:53,790 - INFO - number of model parameters: 124442112
+2020-05-15 02:13:53,790 - INFO - loading traing data
+2020-05-15 02:13:53,890 - INFO - total training steps = 1510608
+2020-05-15 02:13:53,891 - INFO - starting training
+2020-05-15 02:14:07,518 - INFO - batch 99 of epoch 1, loss 7.94287633895874, accuracy 0.02857142873108387
+2020-05-15 02:14:08,081 - INFO - DataLoader worker (pid 11837) is killed by signal: Aborted. 
+2020-05-15 02:15:30,856 - INFO - using device:cuda
+2020-05-15 02:15:34,803 - INFO - load pretrain model!
+2020-05-15 02:15:35,386 - INFO - model config:
+{
+  "activation_function": "gelu_new",
+  "attn_pdrop": 0.1,
+  "bos_token_id": 50256,
+  "embd_pdrop": 0.1,
+  "eos_token_id": 50256,
+  "initializer_range": 0.02,
+  "layer_norm_epsilon": 1e-05,
+  "model_type": "gpt2",
+  "n_ctx": 1024,
+  "n_embd": 768,
+  "n_head": 12,
+  "n_layer": 12,
+  "n_positions": 1024,
+  "resid_pdrop": 0.1,
+  "summary_activation": null,
+  "summary_first_dropout": 0.1,
+  "summary_proj_to_labels": true,
+  "summary_type": "cls_index",
+  "summary_use_proj": true,
+  "vocab_size": 50260
+}
+
+2020-05-15 02:15:40,004 - INFO - Let's use GPUs to train
+2020-05-15 02:15:40,006 - INFO - number of model parameters: 124442112
+2020-05-15 02:15:40,006 - INFO - loading traing data
+2020-05-15 02:15:40,103 - INFO - total training steps = 188826
+2020-05-15 02:15:40,104 - INFO - starting training
+2020-05-15 02:17:28,111 - INFO - batch 99 of epoch 1, loss 7.836788177490234, accuracy 0.04332130029797554
+2020-05-15 02:19:01,128 - INFO - batch 199 of epoch 1, loss 4.788066387176514, accuracy 0.17880794405937195
+2020-05-15 02:20:33,774 - INFO - batch 299 of epoch 1, loss 4.138415336608887, accuracy 0.2368421107530594
+2020-05-15 02:22:07,375 - INFO - batch 399 of epoch 1, loss 3.5981106758117676, accuracy 0.2898089289665222
+2020-05-15 02:23:39,092 - INFO - batch 499 of epoch 1, loss 3.560767650604248, accuracy 0.2781457006931305
+2020-05-15 02:25:11,962 - INFO - batch 599 of epoch 1, loss 3.3796608448028564, accuracy 0.30344825983047485
+2020-05-15 02:26:44,575 - INFO - batch 699 of epoch 1, loss 3.5211989879608154, accuracy 0.33739835023880005
+2020-05-15 02:28:19,157 - INFO - batch 799 of epoch 1, loss 3.21224308013916, accuracy 0.2929292917251587
+2020-05-15 02:29:52,022 - INFO - batch 899 of epoch 1, loss 3.3807082176208496, accuracy 0.3074324429035187
+2020-05-15 02:31:24,196 - INFO - batch 999 of epoch 1, loss 3.192997932434082, accuracy 0.33134329319000244
+2020-05-15 02:32:57,876 - INFO - batch 1099 of epoch 1, loss 3.4135208129882812, accuracy 0.3162939250469208
+2020-05-15 02:34:30,013 - INFO - batch 1199 of epoch 1, loss 2.7440507411956787, accuracy 0.41379308700561523
+2020-05-15 02:36:01,943 - INFO - batch 1299 of epoch 1, loss 3.1344056129455566, accuracy 0.34507042169570923
